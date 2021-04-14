@@ -60,3 +60,53 @@ function largestElementOfAnArray(array){
         return largestElementOfAnArray(newArray)
     }
 }
+// find the sum of all the fibonnaci elements which are less than 4000000 and even 
+function fibonnaci(n){
+    if (n === 2 || n == 1){
+        return 1
+    }
+    return fibonnaci(n - 1) + fibonnaci(n - 2)
+}
+
+let totalSum = 0
+function sumEvenFibonnacci(array){
+    // Sum even fibonnacci series elements which are less than 4million
+    if(array[0] > 4000000){
+        return array 
+    }
+    let sum = array.reduce((num1, num2) => num1 + num2, 0)
+    if(array[0] % 2 === 0){
+        totalSum += array[0]
+    }
+    array.push(sum)
+    array.shift()
+    return sumEvenFibonnacci(array)
+}
+
+
+// sum the digits of a binInt using factorial 
+function factorial(n){
+    if(n === 1){
+        return BigInt(1)
+    }
+    return factorial(n - 1) * BigInt(n)
+}
+
+function sumDigits(num){
+    // if( Math.floor(num / 10) === 0){
+    //     return num 
+    // }
+    // let remainder = num % 10 
+    // let newNum = Math.floor(num / 10)
+    // return sumDigits(newNum) + remainder
+
+    if (num / BigInt(10) === BigInt(0)){
+        return num 
+    }
+    let remainder = num % BigInt(10)
+    let newNum = num / BigInt(10) 
+    return sumDigits(newNum) + remainder
+}
+let big = BigInt(factorial(100))
+
+console.log(sumDigits(big))
